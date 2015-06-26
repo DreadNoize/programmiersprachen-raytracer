@@ -3,18 +3,27 @@
 #include "sphere.hpp"
 
 Sphere::Sphere() :
+    Shape(),
     center_{ glm::vec3{0.0, 0.0, 0.0} },
-    radius_{ 0.0 } 
+    radius_{ 0.0 }
 {}
 
-Sphere::Sphere(double radius) :
+Sphere::Sphere(float radius) :
+    Shape(),
     center_{ glm::vec3{0.0, 0.0, 0.0} },
-    radius_{ radius } 
+    radius_{ radius }
 {}
 
-Sphere::Sphere(glm::vec3 center, double radius) :
+Sphere::Sphere(glm::vec3 center, float radius) :
+    Shape(),
     center_{ center },
-    radius_{ radius } 
+    radius_{ radius }
+{}
+
+Sphere::Sphere(glm::vec3 center, float radius, std::string name, Color farbe) :
+    Shape(name, farbe),
+    center_{ center },
+    radius_{ radius }
 {}
 
 Sphere::~Sphere() {}
@@ -23,15 +32,15 @@ glm::vec3 Sphere::get_center() const {
     return center_;
 }
 
-double Sphere::get_radius() const {
+float Sphere::get_radius() const {
     return radius_;
 }
 
-double Sphere::area() const {
+float Sphere::area() const {
     return (4*M_PI*pow(radius_,2));
 }
 
-double Sphere::volume() const {
+float Sphere::volume() const {
     return ((area()*radius_)/3);
 }
 

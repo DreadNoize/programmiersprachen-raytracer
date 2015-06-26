@@ -7,19 +7,20 @@
 class Sphere : public Shape {
     public:
         Sphere();
-        Sphere(double radius);
-        Sphere(glm::vec3 center, double radius);
+        Sphere(float radius);
+        Sphere(glm::vec3 center, float radius);
+        Sphere(glm::vec3 center, float radius, std::string name, Color farbe);
         ~Sphere();
 
         glm::vec3 get_center() const;
-        double get_radius() const;
+        float get_radius() const;
 
-		double area() const override;
-        double volume() const override;
+		float area() const override;
+        float volume() const override;
 
     private:
         glm::vec3 center_;
-        double radius_;
+        float radius_;
 
 };
 

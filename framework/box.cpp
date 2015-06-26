@@ -45,3 +45,8 @@ float Box::volume() const {
     float c = maximum_.z - minimum_.z;
     return (a*b*c);
 }
+
+std::ostream& Box::print(std::ostream& os) const {
+    Shape::print(os) << maximum_.x << maximum_.y << maximum_.z << minimum_.x << minimum_.y << minimum_.z;
+    return os;
+}

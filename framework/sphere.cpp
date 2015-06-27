@@ -6,27 +6,37 @@ Sphere::Sphere() :
     Shape(),
     center_{ glm::vec3{0.0, 0.0, 0.0} },
     radius_{ 0.0 }
-{}
+{
+    std::cout << "Sphere class constructor \n";
+}
 
 Sphere::Sphere(float radius) :
     Shape(),
     center_{ glm::vec3{0.0, 0.0, 0.0} },
     radius_{ radius }
-{}
+{
+    std::cout << "Sphere class constructor \n";
+}
 
 Sphere::Sphere(glm::vec3 center, float radius) :
     Shape(),
     center_{ center },
     radius_{ radius }
-{}
+{
+	std::cout << "Sphere class constructor  \n";
+}
 
 Sphere::Sphere(glm::vec3 center, float radius, std::string name, Color farbe) :
     Shape(name, farbe),
     center_{ center },
     radius_{ radius }
-{}
+{
+	std::cout << "Sphere class constructor  \n";
+}
 
-Sphere::~Sphere() {}
+Sphere::~Sphere() {
+	std::cout << "Sphere class destructor \n";
+}
 
 glm::vec3 Sphere::get_center() const {
     return center_;
@@ -45,6 +55,10 @@ float Sphere::volume() const {
 }
 
 std::ostream& Sphere::print(std::ostream& os) const {
-    Shape::print(os) << center_.x << center_.y << center_.z << radius_;
+    Shape::print(os) << "Center: (" << center_.x << ", " << center_.y << ", " << center_.z << ")" << '\n' << "Radius: " << radius_ << '\n' << "Area: " << area() << '\n' << "Volume: " << volume() << '\n' << '\n';
     return os;
+}
+
+bool Sphere::intersect(Ray const& r, float& distance) const {
+    return glm::intersectRaySphere(r.origin_, glm::normalize(r.direction_), center_, radius_, distance);
 }

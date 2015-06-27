@@ -3,10 +3,14 @@
 #include <string>
 #include "color.hpp"
 #include <iostream>
+#include <glm/glm.hpp>
+#include <glm/gtx/intersect.hpp>
 
 
 class Shape {
     public:
+        virtual ~Shape();
+
         virtual float area() const = 0;
         virtual float volume() const = 0;
 

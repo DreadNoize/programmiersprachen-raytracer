@@ -7,19 +7,25 @@ Box::Box() :
     Shape(),
     minimum_{glm::vec3{0.0, 0.0, 0.0}},
     maximum_{glm::vec3{0.0, 0.0, 0.0}}
-{}
+{
+    std::cout << "Box class constructor \n";
+}
 
 Box::Box(glm::vec3 min, glm::vec3 max) :
     Shape(),
     minimum_{min},
     maximum_{max}
-{}
+{
+    std::cout << "Box class constructor \n";
+}
 
 Box::Box(glm::vec3 min, glm::vec3 max, std::string name, Color farbe) :
     Shape(name, farbe),
     minimum_{min},
     maximum_{max}
-{}
+{
+    std::cout << "Box class destructor \n";
+}
 
 Box::~Box() {}
 
@@ -47,6 +53,6 @@ float Box::volume() const {
 }
 
 std::ostream& Box::print(std::ostream& os) const {
-    Shape::print(os) << maximum_.x << maximum_.y << maximum_.z << minimum_.x << minimum_.y << minimum_.z;
+    Shape::print(os) << "Maximum: ("<< maximum_.x << ", " << maximum_.y << ", " << maximum_.z << ")" << '\n' << "Minimum: (" << minimum_.x << ", " << minimum_.y << ", " << minimum_.z << ")" << '\n' << "Area: " << area() << '\n' << "Volume: " << volume() << '\n' << '\n' ;
     return os;
 }

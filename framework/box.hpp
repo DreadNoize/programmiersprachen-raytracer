@@ -2,6 +2,7 @@
 #define BUW_BOX_HPP
 #include <glm/vec3.hpp>
 #include "shape.hpp"
+#include "ray.hpp"
 
 
 class Box : public Shape {
@@ -18,7 +19,7 @@ class Box : public Shape {
         /*virtual*/ float volume() const override;
 
         std::ostream& print(std::ostream& os) const override;
-
+        
 
     private:
         glm::vec3 minimum_;
